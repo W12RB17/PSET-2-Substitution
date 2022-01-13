@@ -33,7 +33,7 @@ int main(int argc, string argv[])
         contador ++;    
     }
 
-    for (int i = 0; i < strlen(argv[1]); i++)
+    for (int i = 0, n = strlen(argv[1]); i < n; i++)
     { 
         if (isalpha(argv[1][i]) == 0)
         {
@@ -41,7 +41,35 @@ int main(int argc, string argv[])
             return 1;
         }
     }
-    
-    string plaintext = get_string("Plaintext:  ");
+
+    string plaintext = get_string("\nPlaintext:  ");
     printf("ciphertext: ");
+    for (int i = 0, n = strlen(plaintext); i < n; i++)
+    {
+        if (islower(plaintext[i]))
+        {
+            if (isalpha(plaintext[i]))
+            {
+                int perro = plaintext[i] % 97;
+                printf("%c", tolower(argv[1][perro]));
+            }
+        }
+
+        
+        if (isalpha(plaintext[i]))
+        {
+            if (isupper(plaintext[i]))
+            {
+                int perro = plaintext[i] % 65;
+                printf("%c", toupper(argv[1][perro]));
+            }
+        }
+
+        else
+        {
+            printf("%c", plaintext[i]);
+        }  
+    }
+    printf("\n\n");
 }
+            
